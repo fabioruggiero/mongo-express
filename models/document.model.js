@@ -1,7 +1,7 @@
 var mongoose = require('mongoose');
 var Schema = mongoose.Schema;
 
-var documentSchema = new Schema({
+var Document = new Schema({
     documentId: {type: String, required: true, unique: true},
     title: String,
     author: String,
@@ -9,6 +9,16 @@ var documentSchema = new Schema({
     updated_at: Date
 });
 
-var Document = mongoose.model('Document', documentSchema);
+module.exports = mongoose.model('Document', Document);
 
-module.exports = Document;
+// module.exports = function(mongoose) {
+//     return [{
+//         documentId: {type: String, required: true, unique: true},
+//         title: String,
+//         author: String
+//     }, {
+//         timestamps: true,
+//         createdby: true,
+//         updatedby: true
+//     }]
+// };

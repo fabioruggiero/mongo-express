@@ -5,9 +5,12 @@ var bodyParser = require('body-parser');
 var cors = require('cors');
 var PORT = 3000;
 
+// REQUIRE MIDDLEWARE
+// var instantMongoCrud = require('express-mongo-crud'); // require the module
+
 var Document = require('./models/document.model');
 
-mongoose.connect('database:27017/mongocrud');
+mongoose.connect('mongodb://database:27017/mongocrud');
 
 var options = { //specify options
     host: `localhost:${PORT}`
@@ -43,6 +46,7 @@ router.post('/saveDocument', function (req, res) {
 app.use(cors());
 //USE AS MIDDLEWARE
 app.use(bodyParser.json()); // add body parser
+// app.use(instantMongoCrud(options))
 app.use('/api', router);
 
 
